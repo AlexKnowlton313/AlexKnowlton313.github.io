@@ -1,21 +1,21 @@
-# Custom Variables
-title: Calvin Alexander Knowlton
-email: CalvinAKnowlton@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath
-url: "https://alexknowlton313.github.io/" # the base hostname & protocol
-twitter_username: alexknowlton313
-github_username:  alexknowlton313
-linkedIn_url: "https://www.linkedin.com/in/calexknowlton"
+# Site settings
+title: Highlights
+email: youremailaddress@gmail.com
+description: The Jekyll version of the Highlights theme by HTML5 UP.
+baseurl: "/highlights-jekyll-theme" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site
+
+# Social settings
+500px_url:
+facebook_url: https://facebook.com
+github_url:
+gitlab_url: https://gitlab.com/u/andrewbanchich
+googleplus_url: https://plus.google.com/u/0/+AndrewBanchich
+instagram_url: https://instagram.com
+linkedin_url: https://www.linkedin.com/in/andrew-banchich-a4ba1195
+pinterest_url:
+slack_url:
+twitter_url: https://twitter.com/andrewbanchich
 
 # Build settings
 markdown: kramdown
-theme: minima
-gems:
-  - jekyll-feed
-exclude:
-  - Gemfile
-  - Gemfile.lock
