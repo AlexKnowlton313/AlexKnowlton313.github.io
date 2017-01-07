@@ -1,4 +1,7 @@
 # https://alexknowlton313.github.io/
 Portfolio Website
 
-Built with Jykll
+for development:
+
+<code>jekyll build --watch</code>
+<code>jekyll serve</code>
