@@ -40,7 +40,6 @@
 					// Hack: iOS vh bug.
 						if (skel.vars.os == 'ios')
 							$wrapper
-								.css('margin-top', -25)
 								.css('padding-bottom', 25);
 
 					// Pass scroll event to window.
