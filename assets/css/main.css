@@ -2626,7 +2626,7 @@
 			display: none;
 		}
 
-		.main .container {
+		.main .container{
 			padding: 5em 2.5em 8em 2.5em ;
 			background: rgba(255, 255, 255, 0.95);
 			box-shadow: inset 0 1px 0 0 #dddddd;
@@ -2636,6 +2636,14 @@
 				min-height: calc( 100vh - 13em );
 				content: '';
 				display: inline-block;
+				vertical-align: middle;
+				width: 1px;
+			}
+
+			.main .page-container:before {
+				min-height: 0px;
+				content: '';
+				display: none;
 				vertical-align: middle;
 				width: 1px;
 			}

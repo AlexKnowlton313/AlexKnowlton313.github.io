@@ -1,14 +1,14 @@
 <!DOCTYPE HTML>
 
 <html style="background-image: url({{ site.url }}/images/overlay.png), 
-							   url({{ site.url }}{{ page.image }});">
+							   url({{ site.url }}{{ page.bg-image }});">
 {% include head.html %}
 <body>
 
 <section id="one" class="main special">
-	<div class="container">
-		<span class="image fit primary"><img src="{{ site.url }}{{ page.image }}" alt="" /></span>
-		<div class="content pageContent">
+	<div class="container page-container">
+		<span class="image fit"><img src="{{ site.url }}{{ page.display-image }}" alt="" /></span>
+		<div class="content">
 			<header class="major">
 				<h2>{{ page.title }}</h2>
 			</header>
