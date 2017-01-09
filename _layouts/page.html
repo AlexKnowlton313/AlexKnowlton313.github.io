@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+
+<html style="background-image: url(images/overlay.png), url({{ site.url }}{{ page.image }});">
+{% include head.html %}
+<body>
+
+<section id="one" class="main special">
+	<div class="container">
+		<span class="image fit primary"><img src="{{ site.url }}{{ page.image }}" alt="" /></span>
+		<div class="content pageContent">
+			<header class="major">
+				<h2>{{ page.title }}</h2>
+			</header>
+			{{ page.excerpt }}
+		</div>
+	</div>
+</section>
+</body>
+</html>

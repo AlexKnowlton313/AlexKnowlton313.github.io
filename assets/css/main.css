@@ -2647,6 +2647,10 @@
 				width: calc(100% - 10px);
 			}
 
+			.main .container .pageContent {
+				vertical-align: top;
+			}
+
 		.main .goto-next {
 			-moz-transition: background-color 0.2s ease-in-out;
 			-webkit-transition: background-color 0.2s ease-in-out;

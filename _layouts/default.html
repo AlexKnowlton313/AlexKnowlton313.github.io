@@ -1,9 +1,5 @@
 <!DOCTYPE HTML>
-<!--
-	Highlights by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html>
 {% include head.html %}
 <body>
@@ -64,22 +60,13 @@
 				<h2>Projects</h2>
 			</header>
 			<ul class="icons-grid">
+				{% for post in site.posts %}
 				<li>
-					<span class="icon major fa-graduation-cap"></span>
-					<h3>Student</h3>
+					<h3>
+						<a href="{{ post.url }}">{{ post.title }}</a>
+					</h3>
 				</li>
-				<li>
-					<span class="icon major fa-code-fork"></span>
-					<h3>Developer</h3>
-				</li>
-				<li>
-					<span class="icon major fa-bicycle"></span>
-					<h3>Traveler</h3>
-				</li>
-				<li>
-					<span class="icon major fa-gamepad"></span>
-					<h3>Gamer</h3>
-				</li>
+				{% endfor %}
 			</ul>
 		</div>
 		<a href="#footer" class="goto-next scrolly">Next</a>
