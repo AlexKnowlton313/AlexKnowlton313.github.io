@@ -13,6 +13,11 @@
 				<h2>{{ page.title }}</h2>
 			</header>
 			{{ page.excerpt }}
+			{% if page.github-link %}
+				<a href="{{ page.github-link }}" class="icon alt fa-github" target="_blank">
+					<span class="label">GitHub</span>
+				</a>
+			{% endif %}
 		</div>
 	</div>
 </section>
