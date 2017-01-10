@@ -2133,6 +2133,10 @@
 
 /* Icon */
 
+	.page-icon {
+		color: #61686b;
+	}
+
 	.icon {
 		text-decoration: none;
 		border-bottom: none;
