@@ -186,8 +186,8 @@
 					options = {
 						mode: 'middle',
 						delay: 100,
-						top: '-15vh',
-						bottom: '-15vh'
+						top: '-12vh',
+						bottom: '-12vh'
 					};
 
 					if (skel.canUse('transition')) {

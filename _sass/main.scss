@@ -1033,7 +1033,7 @@
 			}
 		}
 
-		.goto-next {
+		.goto {
 			@include vendor('transition', 'background-color #{_duration(transition)} ease-in-out');
 			background-color: _palette(border-bg);
 			background-image: url('images/arrow.svg');
@@ -1280,7 +1280,7 @@
 					}
 				}
 
-				.goto-next {
+				.goto {
 					display: none;
 				}
 			}

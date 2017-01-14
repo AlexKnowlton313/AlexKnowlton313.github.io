@@ -80,11 +80,11 @@
 			z-index: 1;
 		}
 
-		.main .goto-next {
+		.main .goto {
 			text-decoration: none;
 		}
 
-			.main .goto-next:before {
+			.main .goto:before {
 				-moz-osx-font-smoothing: grayscale;
 				-webkit-font-smoothing: antialiased;
 				font-family: FontAwesome;
@@ -93,7 +93,7 @@
 				text-transform: none !important;
 			}
 
-			.main .goto-next:before {
+			.main .goto:before {
 				color: #dddddd;
 				content: '\f063';
 				display: block;

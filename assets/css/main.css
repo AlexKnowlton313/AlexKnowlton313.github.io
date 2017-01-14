@@ -2663,7 +2663,7 @@
 				vertical-align: top;
 			}
 
-		.main .goto-next {
+		.main .goto {
 			-moz-transition: background-color 0.2s ease-in-out;
 			-webkit-transition: background-color 0.2s ease-in-out;
 			-ms-transition: background-color 0.2s ease-in-out;
@@ -2687,8 +2687,18 @@
 			width: 4em;
 		}
 
-			.main .goto-next:hover {
+			.main .goto:hover {
 				background-color: rgba(144, 144, 144, 0.15);
+			}
+
+			.main .goto-back {
+				-ms-transform: rotate(90deg);
+   				-webkit-transform: rotate(90deg);
+    			transform: rotate(90deg);
+    			position: static;
+    			display: inline-flex;
+    			float: left;
+    			margin: 3vh;
 			}
 
 /* Header */
@@ -2850,6 +2860,10 @@
 					display: none;
 				}
 
+			.main .goto-back {
+				display: none;
+			}
+
 		/* Header */
 
 			#header header {
@@ -2901,7 +2915,7 @@
 					margin: -1.5em 0 2.5em 0;
 				}
 
-			.main .goto-next {
+			.main .goto {
 				display: none;
 			}
 
