@@ -185,16 +185,16 @@
 				// Scrollex.
 					options = {
 						mode: 'middle',
-						delay: 200,
-						top: '-10vh',
-						bottom: '-10vh'
+						delay: 100,
+						top: '-15vh',
+						bottom: '-15vh'
 					};
 
 					if (skel.canUse('transition')) {
 
 						options.init = function() { $bg.removeClass('active'); };
 						options.enter = function() { $bg.addClass('active'); };
-						options.leave = function() { $bg.removeClass('active'); };
+						options.leave = function() { setTimeout( function() { $bg.removeClass('active'); }, 250 ); };
 
 					}
 					else {
@@ -204,7 +204,7 @@
 							.hide();
 
 						options.init = function() { $bg.fadeOut(0); };
-						options.enter = function() { $bg.fadeIn(400); };
+						options.enter = function() { $bg.fadeIn(100); };
 						options.leave = function() { $bg.fadeOut(400); };
 
 					}
