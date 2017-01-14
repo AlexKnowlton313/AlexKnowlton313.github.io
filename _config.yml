@@ -2,8 +2,8 @@
 title: Calvin Alexander Knowlton
 email: CalvinAKnowlton@gmail.com
 description: The Jekyll version of the Highlights theme by HTML5 UP.
-baseurl: "https://alexknowlton313.github.io"
-url: ""
+baseurl: ""
+url: "https://alexknowlton313.github.io"
 
 # Social settings
 500px_url:
