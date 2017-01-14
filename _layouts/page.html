@@ -3,7 +3,7 @@
 <html style="background-image: url({{ site.url }}/assets/css/images/overlay.png), url({{ page.bg-image }});">
 {% include head.html %}
 <body>
-	<section id="one" class="main special">
+	<section id="one" class="main special main-page">
 		{% include backButton.html %}
 		<div class="container page-container">
 			<span class="image fit"><img src="{{ page.display-image }}" alt="" /></span>
@@ -11,7 +11,7 @@
 				<header class="major">
 					<h2>{{ page.title }}</h2>
 				</header>
-				{{ page.excerpt }}]
+				{{ page.excerpt }}
 				{% if page.github-link %}
 				<a href="{{ page.github-link }}" class="page-icon icon alt fa-github fa-3x" target="_blank">
 					<span class="label">GitHub</span>

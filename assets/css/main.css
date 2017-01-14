@@ -2631,7 +2631,7 @@
 		}
 
 		.main .container{
-			padding: 5em 2.5em 8em 2.5em ;
+			padding: 5em 2.5em 8em 2.5em;
 			background: rgba(255, 255, 255, 0.95);
 			box-shadow: inset 0 1px 0 0 #dddddd;
 		}
@@ -2642,6 +2642,11 @@
 				display: inline-block;
 				vertical-align: middle;
 				width: 1px;
+			}
+
+			.main .page-container {
+				margin: 5vh auto 5vh auto;
+				padding: 3em 2.5em 8em 2.5em ;
 			}
 
 			.main .page-container:before {
@@ -2693,12 +2698,11 @@
 
 			.main .goto-back {
 				-ms-transform: rotate(90deg);
-   				-webkit-transform: rotate(90deg);
-    			transform: rotate(90deg);
-    			position: static;
-    			display: inline-flex;
-    			float: left;
-    			margin: 3vh;
+				-webkit-transform: rotate(90deg);
+				transform: rotate(90deg);
+				position: fixed;
+				top: 2em;
+				left: 4em;
 			}
 
 /* Header */
@@ -2914,6 +2918,10 @@
 				.main .container .image.primary:first-child {
 					margin: -1.5em 0 2.5em 0;
 				}
+
+			.main .page-container {
+				margin: 0;
+			}
 
 			.main .goto {
 				display: none;
