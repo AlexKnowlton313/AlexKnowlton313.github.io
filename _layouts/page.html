@@ -6,13 +6,12 @@
 	<section id="one" class="main special">
 		{% include backButton.html %}
 		<div class="container page-container">
-			<span class="image fit"><img src="{{ site.url }}{{ page.display-image }}" alt="" /></span>
+			<span class="image fit"><img src="{{ page.display-image }}" alt="" /></span>
 			<div class="content">
 				<header class="major">
 					<h2>{{ page.title }}</h2>
 				</header>
-				{{ page.excerpt }}
-				{{ site.url }}
+				{{ page.excerpt }}]
 				{% if page.github-link %}
 				<a href="{{ page.github-link }}" class="page-icon icon alt fa-github fa-3x" target="_blank">
 					<span class="label">GitHub</span>
