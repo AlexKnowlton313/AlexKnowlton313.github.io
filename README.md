@@ -1,6 +1,10 @@
-# My Portfolio Website
+# [My Portfolio Website](https://alexknowlton313.github.io/)
 
 A portfolio website built with Jekyll. 
+
+# Building
+
+Run `jekyll serve`
 
 # Credits
 
