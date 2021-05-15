@@ -1,5 +1,5 @@
 ---
 layout: default
-title: Calvin Alexander Knowlton
+title: C Alexander Knowlton
 description: My cool little portfolio :)
 ---
