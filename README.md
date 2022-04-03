@@ -4,7 +4,9 @@ A portfolio website built with Jekyll.
 
 # Building
 
-Run `jekyll serve`
+`bundle config set --local path 'vendor/bundle'`
+`bundle install`
+`bundle exec jekyll serve --incremental`
 
 # Credits
 

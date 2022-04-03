@@ -1,7 +1,9 @@
 @import 'libs/vars';
 @import 'libs/functions';
 @import 'libs/mixins';
-@import url('font-awesome.min.css');
+@import 'libs/vendor';
+@import 'libs/breakpoints';
+@import 'libs/html-grid';
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,400italic,700,800");
 
 /*
@@ -10,37 +12,16 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
-	@import "libs/skel";
+// Breakpoints.
 
-	@include skel-breakpoints((
-		large: '(max-width: 1680px)',
-		medium: '(max-width: 980px)',
-		small: '(max-width: 736px)',
-		xsmall: '(max-width: 480px)'
+	@include breakpoints((
+		large:   ( 981px,  1680px ),
+		medium:  ( 737px,  980px  ),
+		small:   ( 481px,  736px  ),
+		xsmall:  ( null,   480px  )
 	));
 
-	@include skel-layout((
-		reset: 'full',
-		boxModel: 'border',
-		grid: ( gutters: 1.5em ),
-		conditionals: true,
-		containers: 35em,
-		breakpoints: (
-			large: (
-			),
-			medium: (
-				containers: 80%,
-			),
-			small: (
-				grid: (
-					gutters: 1em
-				),
-			),
-			xsmall: (
-				containers: 100%,
-			)
-		)
-	));
+// Mixins.
 
 	@mixin minHeight($tb, $pad) {
 		min-height: calc( 100vh - #{ $tb + (($tb - _size(element-margin)) + $pad) } );
@@ -49,26 +30,107 @@
 	$size-padding-tb: 5em;
 	$size-padding-lr: 2.5em;
 
+// Reset.
+// Based on meyerweb.com/eric/tools/css/reset (v2.0 | 20110126 | License: public domain)
+
+	html, body, div, span, applet, object,
+	iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
+	pre, a, abbr, acronym, address, big, cite,
+	code, del, dfn, em, img, ins, kbd, q, s, samp,
+	small, strike, strong, sub, sup, tt, var, b,
+	u, i, center, dl, dt, dd, ol, ul, li, fieldset,
+	form, label, legend, table, caption, tbody,
+	tfoot, thead, tr, th, td, article, aside,
+	canvas, details, embed, figure, figcaption,
+	footer, header, hgroup, menu, nav, output, ruby,
+	section, summary, time, mark, audio, video {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+	}
+
+	article, aside, details, figcaption, figure,
+	footer, header, hgroup, menu, nav, section {
+		display: block;
+	}
+
+	body {
+		line-height: 1;
+	}
+
+	ol, ul {
+		list-style:none;
+	}
+
+	blockquote,	q {
+		quotes: none;
+
+		&:before,
+		&:after {
+			content: '';
+			content: none;
+		}
+	}
+
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+
+	body {
+		-webkit-text-size-adjust: none;
+	}
+
+	mark {
+		background-color: transparent;
+		color: inherit;
+	}
+
+	input::-moz-focus-inner {
+		border: 0;
+		padding: 0;
+	}
+
+	input, select, textarea {
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		-ms-appearance: none;
+		appearance: none;
+	}
+
 /* Basic */
+
+	// Set box model to border-box.
+	// Based on css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
+		html {
+			box-sizing: border-box;
+		}
+
+		*, *:before, *:after {
+			box-sizing: inherit;
+		}
 
 	html {
 		background-color:		_palette(accent2, bg);
 		background-attachment:	fixed,						fixed;
-		background-image:		url('images/overlay.png'),	url('../../assets/images/bg.jpg');
+		background-image:		url('images/overlay.png'),	url('../../images/bg.jpg');
 		background-position:	top left,					center center;
 		background-repeat:		repeat,						none;
 		background-size:		auto,						cover;
 	}
 
 	html {
-		&.is-loading {
-			body {
+
+		// Stops initial animations until page loads.
+			&.is-preload {
 				*, *:before, *:after {
 					@include vendor('animation', 'none !important');
 					@include vendor('transition', 'none !important');
 				}
 			}
-		}
 
 		&.is-touch {
 			height: 100vh;
@@ -220,6 +282,69 @@
 		text-align: right;
 	}
 
+/* Container */
+
+	.container {
+		margin: 0 auto;
+		max-width: calc(100% - #{_size(element-margin) * 2});
+		width: _size(container-width);
+
+		&.xsmall {
+			width: (_size(container-width) * 0.25);
+		}
+
+		&.small {
+			width: (_size(container-width) * 0.5);
+		}
+
+		&.medium {
+			width: (_size(container-width) * 0.75);
+		}
+
+		&.large {
+			width: (_size(container-width) * 1.25);
+		}
+
+		&.xlarge {
+			width: (_size(container-width) * 1.5);
+		}
+
+		&.max {
+			width: 100%;
+		}
+
+		@include breakpoint('<=medium') {
+			width: 80% !important;
+			max-width: 100% !important;
+		}
+
+		@include breakpoint('<=xsmall') {
+			width: 100% !important;
+		}
+	}
+
+/* Row */
+
+	.row {
+		@include html-grid(1.5em);
+
+		@include breakpoint('<=large') {
+			@include html-grid(1.5em, 'large');
+		}
+
+		@include breakpoint('<=medium') {
+			@include html-grid(1.5em, 'medium');
+		}
+
+		@include breakpoint('<=small') {
+			@include html-grid(1em, 'small');
+		}
+
+		@include breakpoint('<=xsmall') {
+			@include html-grid(1em, 'xsmall');
+		}
+	}
+
 /* Loader */
 
 	// Spinner
@@ -251,7 +376,7 @@
 
 	html {
 		body {
-			@include icon;
+			@include icon(false, solid);
 
 			// Spinner (inactive)
 
@@ -293,7 +418,7 @@
 
 		}
 
-		&.is-loading {
+		&.is-preload {
 			body {
 
 				// Spinner (active)
@@ -421,26 +546,27 @@
 		}
 	}
 
-	.select-wrapper {
-		@include icon;
-		display: block;
-		position: relative;
+	select {
+		background-image: svg-url("<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' preserveAspectRatio='none' viewBox='0 0 40 40'><path d='M9.4,12.3l10.4,10.4l10.4-10.4c0.2-0.2,0.5-0.4,0.9-0.4c0.3,0,0.6,0.1,0.9,0.4l3.3,3.3c0.2,0.2,0.4,0.5,0.4,0.9 c0,0.4-0.1,0.6-0.4,0.9L20.7,31.9c-0.2,0.2-0.5,0.4-0.9,0.4c-0.3,0-0.6-0.1-0.9-0.4L4.3,17.3c-0.2-0.2-0.4-0.5-0.4-0.9 c0-0.4,0.1-0.6,0.4-0.9l3.3-3.3c0.2-0.2,0.5-0.4,0.9-0.4S9.1,12.1,9.4,12.3z' fill='#{_palette(fg-light)}' /></svg>");
+		background-size: 1.25rem;
+		background-repeat: no-repeat;
+		background-position: calc(100% - 1rem) center;
+		height: _size(element-height);
+		padding-right: _size(element-height);
+		text-overflow: ellipsis;
 
-		&:before {
-			color: _palette(fg-light);
-			content: '\f078';
-			display: block;
-			height: _size(element-height);
-			line-height: _size(element-height);
-			pointer-events: none;
-			position: absolute;
-			right: 0;
-			text-align: center;
-			top: 0;
-			width: _size(element-height);
+		option {
+			color: _palette(fg-bold);
+			background: _palette(bg);
 		}
 
-		select::-ms-expand {
+		&:focus {
+			&::-ms-value {
+				background-color: transparent;
+			}
+		}
+
+		&::-ms-expand {
 			display: none;
 		}
 	}
@@ -467,7 +593,7 @@
 		z-index: -1;
 
 		& + label {
-			@include icon;
+			@include icon(false, solid);
 			color: _palette(fg);
 			cursor: pointer;
 			display: inline-block;
@@ -481,13 +607,14 @@
 				background: _palette(border2-bg);
 				content: '';
 				display: inline-block;
-				height: (_size(element-height) * 0.6);
+				font-size: 0.8em;
+				height: (_size(element-height) * 0.75);
 				left: 0;
-				line-height: (_size(element-height) * 0.575);
+				line-height: (_size(element-height) * 0.75);
 				position: absolute;
 				text-align: center;
 				top: 0;
-				width: (_size(element-height) * 0.6);
+				width: (_size(element-height) * 0.75);
 			}
 		}
 
@@ -541,11 +668,6 @@
 		opacity: 1.0;
 	}
 
-	.formerize-placeholder {
-		color: _palette(fg-light) !important;
-		opacity: 1.0;
-	}
-
 /* Box */
 
 	.box {
@@ -575,6 +697,22 @@
 
 		> .label {
 			display: none;
+		}
+
+		&:before {
+			line-height: inherit;
+		}
+
+		&.solid {
+			&:before {
+				font-weight: 900;
+			}
+		}
+
+		&.brands {
+			&:before {
+				font-family: 'Font Awesome 5 Brands';
+			}
 		}
 
 		&.major {
@@ -677,143 +815,170 @@
 			}
 		}
 
-		&.icons {
-			cursor: default;
-			list-style: none;
-			padding-left: 0;
+	}
 
-			li {
-				display: inline-block;
-				padding: 0 1.5em 0 0;
+	dl {
+		margin: 0 0 _size(element-margin) 0;
+	}
 
-				&:last-child {
-					padding-right: 0;
-				}
+/* Icons */
 
-				.icon {
-					&:before {
-						font-size: 1.5em;
-					}
-				}
-			}
-		}
+	ul.icons {
+		cursor: default;
+		list-style: none;
+		padding-left: 0;
 
-		&.icons-grid {
-			list-style: none;
-			padding: 0;
-			position: relative;
+		li {
+			display: inline-block;
+			padding: 0 1.5em 0 0;
 
-			li {
-				display: block;
-				float: left;
-				padding: (_size(element-margin) * 1.5) 0;
-				width: 50%;
-
-				h3 {
-					margin: 0;
-				}
-
-				&:nth-child(2n + 1) {
-					box-shadow: inset -1px 0 0 0 _palette(border), 1px 0 0 0 _palette(border);
-				}
-
-				&:nth-child(2n + 3) {
-					&:before {
-						background: _palette(border);
-						content: '';
-						display: block;
-						height: 2px;
-						margin-top: (_size(element-margin) * -1.5);
-						position: absolute;
-						width: 100%;
-					}
-				}
+			&:last-child {
+				padding-right: 0;
 			}
 
-			&:after {
-				clear: both;
-				content: '';
-				display: block;
-			}
-		}
-
-		&.actions {
-			cursor: default;
-			list-style: none;
-			padding-left: 0;
-
-			li {
-				display: inline-block;
-				padding: 0 (_size(element-margin) * 0.5) 0 0;
-				vertical-align: middle;
-
-				&:last-child {
-					padding-right: 0;
-				}
-			}
-
-			&.small {
-				li {
-					padding: 0 (_size(element-margin) * 0.25) 0 0;
-				}
-			}
-
-			&.vertical {
-				li {
-					display: block;
-					padding: (_size(element-margin) * 0.5) 0 0 0;
-
-					&:first-child {
-						padding-top: 0;
-					}
-
-					> * {
-						margin-bottom: 0;
-					}
-				}
-
-				&.small {
-					li {
-						padding: (_size(element-margin) * 0.25) 0 0 0;
-
-						&:first-child {
-							padding-top: 0;
-						}
-					}
-				}
-			}
-
-			&.fit {
-				display: table;
-				margin-left: (_size(element-margin) * -0.5);
-				padding: 0;
-				table-layout: fixed;
-				width: calc(100% + #{(_size(element-margin) * 0.5)});
-
-				li {
-					display: table-cell;
-					padding: 0 0 0 (_size(element-margin) * 0.5);
-
-					> * {
-						margin-bottom: 0;
-						min-width: 0;
-					}
-				}
-
-				&.small {
-					margin-left: (_size(element-margin) * -0.25);
-					width: calc(100% + #{(_size(element-margin) * 0.25)});
-
-					li {
-						padding: 0 0 0 (_size(element-margin) * 0.25);
-					}
+			.icon {
+				&:before {
+					font-size: 1.5em;
 				}
 			}
 		}
 	}
 
-	dl {
-		margin: 0 0 _size(element-margin) 0;
+/* Icons Grid */
+
+	ul.icons-grid {
+		list-style: none;
+		padding: 0;
+		position: relative;
+
+		li {
+			display: block;
+			float: left;
+			padding: (_size(element-margin) * 1.5) 0;
+			width: 50%;
+
+			h3 {
+				margin: 0;
+			}
+
+			&:nth-child(2n + 1) {
+				box-shadow: inset -1px 0 0 0 _palette(border), 1px 0 0 0 _palette(border);
+			}
+
+			&:nth-child(2n + 3) {
+				&:before {
+					background: _palette(border);
+					content: '';
+					display: block;
+					height: 2px;
+					margin-top: (_size(element-margin) * -1.5);
+					position: absolute;
+					width: 100%;
+				}
+			}
+		}
+
+		&:after {
+			clear: both;
+			content: '';
+			display: block;
+		}
+	}
+
+/* Actions */
+
+	ul.actions {
+		@include vendor('display', 'flex');
+		cursor: default;
+		list-style: none;
+		margin-left: (_size(element-margin) * -0.5);
+		padding-left: 0;
+
+		li {
+			padding: 0 0 0 (_size(element-margin) * 0.5);
+			vertical-align: middle;
+		}
+
+		&.special {
+			@include vendor('justify-content', 'center');
+			width: 100%;
+			margin-left: 0;
+
+			li {
+				&:first-child {
+					padding-left: 0;
+				}
+			}
+		}
+
+		&.stacked {
+			@include vendor('flex-direction', 'column');
+			margin-left: 0;
+
+			li {
+				padding: (_size(element-margin) * 0.65) 0 0 0;
+
+				&:first-child {
+					padding-top: 0;
+				}
+			}
+		}
+
+		&.fit {
+			width: calc(100% + #{_size(element-margin) * 0.5});
+
+			li {
+				@include vendor('flex-grow', '1');
+				@include vendor('flex-shrink', '1');
+				width: 100%;
+
+				> * {
+					width: 100%;
+				}
+			}
+
+			&.stacked {
+				width: 100%;
+			}
+		}
+
+		@include breakpoint('<=xsmall') {
+			&:not(.fixed) {
+				@include vendor('flex-direction', 'column');
+				margin-left: 0;
+				width: 100% !important;
+
+				li {
+					@include vendor('flex-grow', '1');
+					@include vendor('flex-shrink', '1');
+					padding: (_size(element-margin) * 0.5) 0 0 0;
+					text-align: center;
+					width: 100%;
+
+					> * {
+						width: 100%;
+					}
+
+					&:first-child {
+						padding-top: 0;
+					}
+
+					input[type="submit"],
+					input[type="reset"],
+					input[type="button"],
+					button,
+					.button {
+						width: 100%;
+
+						&.icon {
+							&:before {
+								margin-left: -0.5em;
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 
 /* Table */
@@ -938,8 +1103,6 @@
 		}
 
 		&.fit {
-			display: block;
-			margin: 0 0 (_size(element-margin) * 0.5) 0;
 			width: 100%;
 		}
 
@@ -947,11 +1110,11 @@
 			font-size: 0.8em;
 		}
 
-		&.big {
+		&.large {
 			font-size: 1.35em;
 		}
 
-		&.special {
+		&.primary {
 			background-color: _palette(accent1, bg);
 			border: 0;
 			box-shadow: none;
@@ -1033,7 +1196,7 @@
 			}
 		}
 
-		.goto {
+		.goto-next {
 			@include vendor('transition', 'background-color #{_duration(transition)} ease-in-out');
 			background-color: _palette(border-bg);
 			background-image: url('images/arrow.svg');
@@ -1183,7 +1346,7 @@
 
 /* Large */
 
-	@include breakpoint(large) {
+	@include breakpoint('<=large') {
 
 		/* Basic */
 
@@ -1195,7 +1358,7 @@
 
 /* Medium */
 
-	@include breakpoint(medium) {
+	@include breakpoint('<=medium') {
 
 		$size-padding-tb: 3em;
 		$size-padding-lr: 3em;
@@ -1258,7 +1421,7 @@
 
 /* Small */
 
-	@include breakpoint(small) {
+	@include breakpoint('<=small') {
 
 		$size-padding-tb: 3em;
 		$size-padding-lr: 1.5em;
@@ -1280,7 +1443,7 @@
 					}
 				}
 
-				.goto {
+				.goto-next {
 					display: none;
 				}
 			}
@@ -1323,7 +1486,7 @@
 
 /* XSmall */
 
-	@include breakpoint(xsmall) {
+	@include breakpoint('<=xsmall') {
 
 		$size-padding-tb: 3em;
 		$size-padding-lr: 1em;
