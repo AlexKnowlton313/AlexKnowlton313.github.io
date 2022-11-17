@@ -3,78 +3,84 @@
 <html>
 <script src="https://use.fontawesome.com/508f7ff1ca.js"></script>
 {% include head.html %}
+
 <body>
-{% include header.html %}
+	{% include header.html %}
 
-<!-- One -->
-<section id="one" class="main special">
-	<div class="container">
-		<span class="image fit primary"><img src="assets/images/pic01.jpg" alt="" /></span>
-		<div class="content">
-			<header class="major">
-				<h2>Who I am</h2>
-			</header>
-			<p>Hi There! I am a Software Development Engineer at Amazon who loves wokring on full stack projects and solving complicated problems. In 2019, I received a Bachelor’s and Master’s in Computer Science from Johns Hopkins University. I am intruged by data and cryptolographic systems, and consider myself an eager learner, world traveler, avid skier, ameture chef, and full-time goofball.</p>
+	<!-- One -->
+	<section id="one" class="main special">
+		<div class="container">
+			<span class="image fit primary"><img src="assets/images/pic01.jpg" alt="" /></span>
+			<div class="content">
+				<header class="major">
+					<h2>Who I am</h2>
+				</header>
+				<p>Hi There! I am a Software Development Engineer at Amazon who loves wokring on full stack projects and
+					solving complicated problems. In 2019, I received a Bachelor’s and Master’s in Computer Science from
+					Johns Hopkins University. I am intruged by data and cryptographic systems, and consider myself an
+					eager learner, world traveler, avid skier, ameture chef, and full-time goofball.</p>
+			</div>
+			<a href="#two" class="goto scrolly">Next</a>
 		</div>
-		<a href="#two" class="goto scrolly">Next</a>
-	</div>
-</section>
+	</section>
 
-<!-- Two -->
-<section id="two" class="main special">
-	<div class="container">
-		<span class="image fit primary"><img src="assets/images/pic02.jpg" alt="" /></span>
-		<div class="content">
-			<header class="major">
-				<h2>What I do</h2>
-			</header>
-			<p>When I'm not behind my desk, you can find me exploring the world, learning a new vegitarian dish, hanging with friends, working on a project, or rising the ladder in Rocket League.</p>
-			<ul class="icons-grid">
-				<li>
-					<span class="icon major fas fa-laptop"></span>
-					<h3>Developer</h3>
-				</li>
-				<li>
-					<span class="icon major fas fa-binoculars"></span>
-					<h3>Explorer</h3>
-				</li>
-				<li>
-					<span class="icon major fas fa-cutlery"></span>
-					<h3>Home Cook</h3>
-				</li>
-				<li>
-					<span class="icon major fas fa-gamepad"></span>
-					<h3>Gamer</h3>
-				</li>
-			</ul>
+	<!-- Two -->
+	<section id="two" class="main special">
+		<div class="container">
+			<span class="image fit primary"><img src="assets/images/pic02.jpg" alt="" /></span>
+			<div class="content">
+				<header class="major">
+					<h2>What I do</h2>
+				</header>
+				<p>When I'm not behind my desk, you can find me exploring the world, learning a new vegetarian dish,
+					hanging with friends, working on a project, or rising the ladder in Rocket League.</p>
+				<ul class="icons-grid">
+					<li>
+						<span class="icon major fas fa-laptop"></span>
+						<h3>Developer</h3>
+					</li>
+					<li>
+						<span class="icon major fas fa-binoculars"></span>
+						<h3>Explorer</h3>
+					</li>
+					<li>
+						<span class="icon major fas fa-cutlery"></span>
+						<h3>Home Cook</h3>
+					</li>
+					<li>
+						<span class="icon major fas fa-gamepad"></span>
+						<h3>Gamer</h3>
+					</li>
+				</ul>
+			</div>
+			<a href="#three" class="goto scrolly">Next</a>
 		</div>
-		<a href="#three" class="goto scrolly">Next</a>
-	</div>
-</section>
+	</section>
 
-<!-- Three -->
-<section id="three" class="main special">
-	<div class="container">
-		<span class="image fit primary"><img src="assets/images/pic03.jpg" alt="" /></span>
-		<div class="content">
-			<header class="major">
-				<h2>Projects</h2>
-			</header>
-			<ul class="icons-grid">
-				{% for post in site.posts %}
-				<li>
-					<h3>
-						<a href="{{ post.url }}">{{ post.title }}</a>
-					</h3>
-				</li>
-				{% endfor %}
-			</ul>
+	<!-- Three -->
+	<section id="three" class="main special">
+		<div class="container">
+			<span class="image fit primary"><img src="assets/images/pic03.jpg" alt="" /></span>
+			<div class="content">
+				<header class="major">
+					<h2>Projects</h2>
+				</header>
+				<ul class="icons-grid">
+					{% for post in site.posts %}
+					<li>
+						<h3>
+							<a href="{{ post.url }}">{{ post.title }}</a>
+						</h3>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<a href="#footer" class="goto scrolly">Next</a>
 		</div>
-		<a href="#footer" class="goto scrolly">Next</a>
-	</div>
-</section>
+	</section>
 
-{% include footer.html %}
+	{% include footer.html %}
 
 </body>
+
 </html>
